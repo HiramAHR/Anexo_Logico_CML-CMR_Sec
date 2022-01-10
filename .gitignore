@@ -24,5 +24,6 @@
 /Debug/source/sys_vim.obj
 /Debug/source/system.obj
 /Debug/source/*.obj
+/Debug/source/*.d
 /Debug/Aplicacion/source/*.obj
 /Debug/
