@@ -783,7 +783,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00004007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)8U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -800,7 +800,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00052007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -817,7 +817,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00008007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)10U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -834,7 +834,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00056007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -851,7 +851,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0000C007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)12U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -868,7 +868,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0005A007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -885,7 +885,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00010007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)14U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -902,7 +902,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0005E007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -919,7 +919,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00014007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)16U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -936,7 +936,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00062007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -953,7 +953,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00018007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)17U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -970,7 +970,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00066007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -987,7 +987,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0001C007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)18U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -1004,7 +1004,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0006A007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -1021,7 +1021,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x00020007U | (uint32)((uint32)0U << 22U) | (uint32)((uint32)19U << 8U) | (uint32)((uint32)3U << 3U)),
         /* Data */
-        80128U,
+        45184U,
         /* Reserved */
         0x00000000U
     },
@@ -1038,7 +1038,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
         /* Control */
         (0x0006E007U),
         /* Data */
-        159872U,
+        89984U,
         /* Reserved */
         0x00000000U
     },
@@ -1307,7 +1307,7 @@ void hetInit(void)
     *     - Loop resolution prescaler
     *     - High resolution prescaler
     */
-    hetREG1->PFR = (uint32)((uint32) 6U << 8U)
+    hetREG1->PFR = (uint32)((uint32) 7U << 8U)
                 | ((uint32) 0U);
 
 
@@ -1578,7 +1578,7 @@ void pwmSetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t signal)
 
     if(hetRAM == hetRAM1)
     {
-        pwmPeriod = (signal.period * 1000.0F) / 800.000F;
+        pwmPeriod = (signal.period * 1000.0F) / 1422.222F;
         pwmPolarity = s_het1pwmPolarity[pwm];
     }
     else
@@ -1636,11 +1636,11 @@ void pwmGetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t* signal)
 
     if(hetRAM == hetRAM1)
     {
-        signal->period = ((float64)pwmPeriod * 800.000F) / 1000.0F;
+        signal->period = ((float64)pwmPeriod * 1422.222F) / 1000.0F;
     }
     else
     {
-        signal->period = ((float64)pwmPeriod * 800.000F) / 1000.0F;
+        signal->period = ((float64)pwmPeriod * 1422.222F) / 1000.0F;
     }
 }
 
@@ -1834,11 +1834,11 @@ void capGetSignal(hetRAMBASE_t * hetRAM, uint32 cap, hetSIGNAL_t *signal)
 
     if( hetRAM == hetRAM1)
     {
-        signal->period = ((float64)pwmPeriod * 800.000F) / 1000.0F;
+        signal->period = ((float64)pwmPeriod * 1422.222F) / 1000.0F;
     }
     else
     {
-        signal->period = ((float64)pwmPeriod * 800.000F) / 1000.0F;
+        signal->period = ((float64)pwmPeriod * 1422.222F) / 1000.0F;
     }
 }
 

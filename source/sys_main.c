@@ -127,7 +127,7 @@ int main(void)
 {
 /* USER CODE BEGIN (3) */
 
-    uint32_t i=0;
+    uint32_t delay=0;
     muxInit();  //Inicializa el periferico pinmux
     gioInit();  //Inicializa el periferico gio
     sciInit();   // iniciaizar el modulo sci en el modo UART
@@ -136,10 +136,6 @@ int main(void)
 
     while(1)
     {
-        for(i=0;i<16000000;i++)//for para retardo
-        {
-         //retardo
-        }
 
         ActualizarEntradas();
 
@@ -149,8 +145,15 @@ int main(void)
 
         ActualizarSalidas();
 
-        ConsolaSerial();
-
+        if(delay > 50000)
+        {
+            ConsolaSerial();
+            delay=0;
+        }
+        else
+        {
+            delay++;
+        }
 
     }
 
@@ -206,7 +209,7 @@ void ActualizarSalidas(void)
     gioSetBit(hetPORT1,PIN_HET_20,salidas.ref_60kmh_vm);
     gioSetBit(hetPORT1,PIN_HET_8,salidas.s15vssd_rebucleo);
     gioSetBit(hetPORT1,PIN_HET_28,salidas.EC);
-    gioSetBit(hetPORT1,PIN_HET_24,salidas.EC);
+    gioSetBit(hetPORT1,PIN_HET_24,salidas.CP);
 }
 
 void ActualizarEntradas(void)
@@ -231,33 +234,33 @@ void ActualizarEntradas(void)
 void ConsolaSerial(void)
 {
     sciSend(sciREG, strlen("---- ENTRADAS ---- \r\n"),"---- ENTRADAS ---- \r\n");
-    Texto("s10v_v       ",entradas.s10v);
+    Texto("s10v_v.......",entradas.s10v);
     Texto("s11v_v       ",entradas.s11v);
-    Texto("squelch_av_v ",entradas.squelch_av);
+    Texto("squelch_av_v.",entradas.squelch_av);
     Texto("squelch_ar_v ",entradas.squelch_ar);
-    Texto("bfvm_v       ",entradas.bfvm);
+    Texto("bfvm_v.......",entradas.bfvm);
     Texto("bf48_v       ",entradas.bf48);
-    Texto("retro1_v     ",entradas.retro1);
+    Texto("retro1_v.....",entradas.retro1);
     Texto("retro2_v     ",entradas.retro2);
 
-    Texto("s15vssd_v    ",entradas.s15vssd);
+    Texto("s15vssd_v....",entradas.s15vssd);
     Texto("s102K(72v)   ",entradas.s102K_LT);
-    Texto("s69k         ",entradas.s69k_LT);
+    Texto("s69k.........",entradas.s69k_LT);
     Texto("s58k(DR)     ",entradas.s58k_LT);
-    Texto("s42QVA       ",entradas.s42QVA_LT);
+    Texto("s42QVA.......",entradas.s42QVA_LT);
     Texto("s49QVA       ",entradas.s49QVA_LT);
-    Texto("QVA1         ",entradas.QVA1);
+    Texto("QVA1.........",entradas.QVA1);
 
     sciSend(sciREG, strlen("---- SALIDAS ---- \r\n"),"---- SALIDAS ---- \r\n");
     Texto("ref_15kmh_bf ",salidas.ref_15kmh_bf);
-    Texto("ref_25kmh_hf ",salidas.ref_25kmh_hf);
+    Texto("ref_25kmh_hf.",salidas.ref_25kmh_hf);
     Texto("ref_35kmh_dr ",salidas.ref_35kmh_dr);
-    Texto("ref_60kmh_VM ",salidas.ref_60kmh_vm);
+    Texto("ref_60kmh_VM.",salidas.ref_60kmh_vm);
     Texto("s15v_rebucleo",salidas.s15vssd_rebucleo);
-    Texto("EC           ",salidas.EC);
+    Texto("EC...........",salidas.EC);
     Texto("CP           ",salidas.CP);
 
-    sciSend(sciREG, strlen("\r\n\r\n"),"\r\n\r\n");
+    //sciSend(sciREG, strlen("\r\n\r\n"),"\r\n\r\n");
 }
 
 void Texto( uint8 * nombre ,uint8 estado)
