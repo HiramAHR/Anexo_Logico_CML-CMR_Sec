@@ -258,16 +258,16 @@ void ConsolaSerial(void)        //Funcion para monitorear las señales a traves d
 
 void Texto( uint8 * nombre ,uint8 estado)       //Funcion para mandar los estados de las señales ON para cuando se detecta un 1 logico y OFF para cuando se detecta un 0 logico
 {
-    uint8 * activo = ".ON\r\n";
-    uint8 * noActivo="OFF\r\n";
-    sciSend(sciREG, strlen(nombre),nombre);
+    char * activo = ".ON\r\n";
+    char * noActivo="OFF\r\n";
+    sciSend(sciREG, strlen((const char *)nombre),(uint8 *)nombre);
     if(estado)
     {
-        sciSend(sciREG, strlen(activo),activo);
+        sciSend(sciREG, strlen(activo),(uint8 *)activo);
     }
     else
     {
-        sciSend(sciREG, strlen(noActivo),noActivo);
+        sciSend(sciREG, strlen(noActivo),(uint8 *)noActivo);
     }
 }
 
