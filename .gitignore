@@ -48,3 +48,6 @@
 /Debug/source/*.d
 /Debug/Aplicacion/source/*.obj
 /Debug/
+/Aplicacion/
+/CML-CMR_Anexo_Logico.dil
+/CML-CMR_Anexo_Logico.hcg

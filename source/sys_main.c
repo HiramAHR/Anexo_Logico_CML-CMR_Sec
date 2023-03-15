@@ -176,7 +176,7 @@ void logicaVel(void)        //Funcion para generar energía cable a traves de la 
 {
     uint32_t ref25=0, ref60=0, ref35=0, ref15=0, EC=0, aux=0;
 
-    ref25 = (entradas.i10v_RF||entradas.i11v_RF) && ( !(entradas.iBfVM_RF ));   //Ver documento Manual del Equipo Embarcado del Sistema de Pilotaje Automatico 135 kHz pag. 102 diagrama "Elaboración de los umbrales".
+    ref25 = (entradas.i10v_RF||entradas.i11v_RF) && ( !(entradas.iBfVM_RF) || entradas.i58k_LT );   //Ver documento Manual del Equipo Embarcado del Sistema de Pilotaje Automatico 135 kHz pag. 102 diagrama "Elaboración de los umbrales".
 
     ref60 = entradas.iBfVM_RF && ( !(entradas.i58k_LT ));
 
